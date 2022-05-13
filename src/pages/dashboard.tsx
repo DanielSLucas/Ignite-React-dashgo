@@ -2,7 +2,7 @@ import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 import { Header } from "../components/Header";
-import { SideBar } from "../components/SideBar";
+import { Sidebar } from "../components/Sidebar";
 
 // Para que o gráfico seja carregado somente do lado do browser
 const Chart = dynamic(() => import('react-apexcharts'), {
@@ -67,7 +67,7 @@ export default function Dashboard() {
       <Header />
 
       <Flex w="100%" my="6" maxW={1480} mx="auto" px="6">
-        <SideBar />
+        <Sidebar />
 
         <SimpleGrid flex="1" gap="4" minChildWidth="320px" alignItems="flex-start">
           <Box
