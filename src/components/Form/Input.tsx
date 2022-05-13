@@ -4,16 +4,14 @@ import { FieldError, FieldValues, RegisterOptions, UseFormRegister } from "react
 interface InputProps extends ChakraInputProps{
   name: string;
   label?: string;
-  register: UseFormRegister<FieldValues>;
-  validationRules?: RegisterOptions;
+  register: UseFormRegister<FieldValues>;  
   error?: FieldError;
 }
 
 export function Input({ 
   name, 
   label, 
-  register, 
-  validationRules = {},
+  register,
   error = null,
   ...rest 
 }: InputProps) {  
@@ -32,7 +30,7 @@ export function Input({
         }}
         size="lg"
         {...rest}
-        {...register(name, validationRules)}
+        {...register(name)}
       />
 
       {!!error && (
