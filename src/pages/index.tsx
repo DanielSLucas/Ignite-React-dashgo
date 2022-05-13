@@ -9,7 +9,8 @@ type SignInFormData = {
 }
 
 export default function Home() {
-  const { register, handleSubmit, formState } = useForm();  
+  const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm();  
+  
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -41,12 +42,17 @@ export default function Home() {
             label="E-mail" 
             type="email" 
             register={register}
+            error={errors.email}
+            validationRules={{
+              required: "E-mail obrigatório"
+            }}
           />
           <Input 
             name="password" 
             label="Senha" 
             type="password" 
-            register={register}            
+            register={register}
+            error={errors.password}    
           />
         </Stack>
         
@@ -55,7 +61,7 @@ export default function Home() {
           mt="6"
           colorScheme="pink"
           size="lg"
-          isLoading={formState.isSubmitting}
+          isLoading={isSubmitting}
         >
           Entrar
         </Button>
