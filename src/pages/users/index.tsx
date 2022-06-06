@@ -29,23 +29,23 @@ import { api } from "../../services/api";
 import { getUsers, useUsers } from "../../services/hooks/userUsers";
 import { queryClient } from "../../services/queryClient";
 
-type UsersListProps = {
-  users: {
-    id: string;
-    name: string;
-    email: string;
-    created_at: string;
-  }[];
-  totalCount: number;
-}
+// type UsersListProps = {
+//   users: {
+//     id: string;
+//     name: string;
+//     email: string;
+//     created_at: string;
+//   }[];
+//   totalCount: number;
+// }
 
-export default function UserList({ users, totalCount }: UsersListProps) {
+export default function UserList() {
   const [page, setPage] = useState(1);
   const { data, isLoading, isFetching, isError: error } = useUsers(page, {
-    initialData: {
-      users,
-      totalCount,
-    },    
+    // initialData: {
+    //   users,
+    //   totalCount,
+    // },    
   });
 
   const isWideVersion = useBreakpointValue({
@@ -159,13 +159,13 @@ export default function UserList({ users, totalCount }: UsersListProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const { users, totalCount } = await getUsers(1)
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const { users, totalCount } = await getUsers(1)
   
-  return {
-    props: {
-      users,
-      totalCount,
-    }
-  }
-}
+//   return {
+//     props: {
+//       users,
+//       totalCount,
+//     }
+//   }
+// }
