@@ -73,47 +73,51 @@ export default function UserList() {
           ): (
             <>
               <Table colorScheme="whiteAlpha">
-              <Thead>
-                <Tr>
-                  <Th px={["4", "4", "6"]} color="gray.300" width="8">
-                    <Checkbox colorScheme="pink" />
-                  </Th>
-                  <Th>Usuário</Th>
-                  {isWideVersion && <Th>Data de cadastro</Th>}
-                  {isWideVersion && <Th w="8"></Th>}
-                </Tr>
-              </Thead>
+                <Thead>
+                  <Tr>
+                    <Th px={["4", "4", "6"]} color="gray.300" width="8">
+                      <Checkbox colorScheme="pink" />
+                    </Th>
+                    <Th>Usuário</Th>
+                    {isWideVersion && <Th>Data de cadastro</Th>}
+                    {isWideVersion && <Th w="8"></Th>}
+                  </Tr>
+                </Thead>
 
-              <Tbody>
-                {data.map(user => (
-                  <Tr key={user.id}>
-                    <Td px={["4", "4", "6"]}><Checkbox colorScheme="pink" /></Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">{user.name}</Text>  
-                        <Text fontSize="sm" color="gray.300">{user.email}</Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>{user.createdAt}</Td>}
-                    {isWideVersion && (
+                <Tbody>
+                  {data.map(user => (
+                    <Tr key={user.id}>
+                      <Td px={["4", "4", "6"]}><Checkbox colorScheme="pink" /></Td>
                       <Td>
-                        <Button 
-                          as="a" 
-                          size="sm" 
-                          fontSize="sm" 
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize="16"/>}
-                        >
-                          Editar
-                        </Button>
+                        <Box>
+                          <Text fontWeight="bold">{user.name}</Text>  
+                          <Text fontSize="sm" color="gray.300">{user.email}</Text>
+                        </Box>
                       </Td>
-                    )}
-                  </Tr> 
-                ))}
-              </Tbody>
-            </Table>
+                      {isWideVersion && <Td>{user.createdAt}</Td>}
+                      {isWideVersion && (
+                        <Td>
+                          <Button 
+                            as="a" 
+                            size="sm" 
+                            fontSize="sm" 
+                            colorScheme="purple"
+                            leftIcon={<Icon as={RiPencilLine} fontSize="16"/>}
+                          >
+                            Editar
+                          </Button>
+                        </Td>
+                      )}
+                    </Tr> 
+                  ))}
+                </Tbody>
+              </Table>
 
-            <Pagination />
+              <Pagination 
+                totalCountOfRegisters={200}
+                currentPage={5}
+                onPageChange={() => {}}
+              />
             </>
           )}
         </Box>
